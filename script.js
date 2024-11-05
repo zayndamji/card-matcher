@@ -39,35 +39,6 @@ function generateColors() {
   shuffle(colors);
 }
 
-// function getUniqueRGB() {
-//   let isSimilar = true;
-//   let rgb;
-
-//   while (isSimilar) {
-//     rgb = getRandomRGB();
-//     isSimilar = false;
-
-//     for (let i = 0; i < colors.length; i++) {
-//       if (Math.abs(rgb.r - colors[i].r) < 30 &&
-//           Math.abs(rgb.g - colors[i].g) < 30 && 
-//           Math.abs(rgb.b - colors[i].b) < 30) {
-//         isSimilar = true;
-//         break;
-//       }
-//     }
-//   }
-
-//   return rgb;
-// }
-
-// function getRandomRGB() {
-//   return {
-//     r: getRandomInt(0, 256),
-//     g: getRandomInt(0, 256),
-//     b: getRandomInt(0, 256)
-//   }
-// }
-
 function getUniqueHexCode() {
   let isSimilar = true;
   let hex;
