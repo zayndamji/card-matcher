@@ -32,39 +32,16 @@ function generateColors() {
   colors = [];
 
   for (let i = 0; i < gridArea()/2; i++) {
-    const color = getUniqueHexCode();
+    const color = getRandomInt(i*(16777215/(gridArea()/2)), (i+1)*(16777215/(gridArea()/2)));
+    console.log(color);
     colors.push(color, color);
   }
 
   shuffle(colors);
 }
 
-function getUniqueHexCode() {
-  let isSimilar = true;
-  let hex;
-
-  while (isSimilar) {
-    hex = getRandomHexCode();
-    isSimilar = false;
-
-    for (let i = 0; i < colors.length; i++) {
-      if (Math.abs(hex - colors[i]) < 1000000) {
-        console.log(hex, colors[i]);
-        isSimilar = true;
-        break;
-      }
-    }
-  }
-
-  return hex;
-}
-
 function hexCodeToString(hex) {
   return hex.toString(16).padStart(6, '0');
-}
-
-function getRandomHexCode() {
-  return (Math.random() * 0xFFFFFF << 0);
 }
 
 function getRandomInt(min, max) {
