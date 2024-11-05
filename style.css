@@ -1,0 +1,40 @@
+body {
+  font-size: 16px;
+}
+
+button {
+  background-color: transparent;
+  border: solid black 2px;
+  border-radius: 16px;
+  height: 48px;
+  width: 196px;
+  font-size: 16px;
+}
+
+#card-grid {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  row-gap: 16px;
+  column-gap: 16px;
+  max-width: 580px;
+}
+
+.card-container {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+}
+
+.card-dummy {
+  margin-top: 100%;
+}
+
+.card {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: solid black 2px;
+  border-radius: 16px;
+}
