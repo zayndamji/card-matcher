@@ -20,7 +20,8 @@ function generateCardGrid() {
     cardDummy.classList.add('card-dummy');
     const card = document.createElement('div');
     card.classList.add('card');
-    card.style.backgroundColor = colors[i];
+    card.style.backgroundColor = `#${hexCodeToString(colors[i])}`;
+    card.id = colors[i];
 
     cardContainer.append(cardDummy, card);
     cardGrid.append(cardContainer);
@@ -31,15 +32,74 @@ function generateColors() {
   colors = [];
 
   for (let i = 0; i < gridArea()/2; i++) {
-    const color = getRandomHexCode();
+    const color = getUniqueHexCode();
     colors.push(color, color);
   }
 
   shuffle(colors);
 }
 
+// function getUniqueRGB() {
+//   let isSimilar = true;
+//   let rgb;
+
+//   while (isSimilar) {
+//     rgb = getRandomRGB();
+//     isSimilar = false;
+
+//     for (let i = 0; i < colors.length; i++) {
+//       if (Math.abs(rgb.r - colors[i].r) < 30 &&
+//           Math.abs(rgb.g - colors[i].g) < 30 && 
+//           Math.abs(rgb.b - colors[i].b) < 30) {
+//         isSimilar = true;
+//         break;
+//       }
+//     }
+//   }
+
+//   return rgb;
+// }
+
+// function getRandomRGB() {
+//   return {
+//     r: getRandomInt(0, 256),
+//     g: getRandomInt(0, 256),
+//     b: getRandomInt(0, 256)
+//   }
+// }
+
+function getUniqueHexCode() {
+  let isSimilar = true;
+  let hex;
+
+  while (isSimilar) {
+    hex = getRandomHexCode();
+    isSimilar = false;
+
+    for (let i = 0; i < colors.length; i++) {
+      if (Math.abs(hex - colors[i]) < 1000000) {
+        console.log(hex, colors[i]);
+        isSimilar = true;
+        break;
+      }
+    }
+  }
+
+  return hex;
+}
+
+function hexCodeToString(hex) {
+  return hex.toString(16).padStart(6, '0');
+}
+
 function getRandomHexCode() {
-  return '#'+ (Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
+  return (Math.random() * 0xFFFFFF << 0);
+}
+
+function getRandomInt(min, max) {
+  const minCeiled = Math.ceil(min);
+  const maxFloored = Math.floor(max);
+  return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); // The maximum is exclusive and the minimum is inclusive
 }
 
 function shuffle(array) {
