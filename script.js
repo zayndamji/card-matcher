@@ -21,8 +21,18 @@ function generateCardGrid() {
     cardDummy.classList.add('card-dummy');
     const card = document.createElement('div');
     card.classList.add('card');
-    card.style.backgroundColor = `#${hexCodeToString(colors[i])}`;
+    card.style.backgroundColor = `black`;
     card.id = colors[i];
+    card.onclick = () => {
+      console.log(card.style.backgroundColor);
+      if (card.style.backgroundColor == 'black') {
+        card.style.backgroundColor = `#${hexCodeToString(colors[i])}`;
+        card.style.borderColor = 'black';
+      } else {
+        card.style.backgroundColor = 'black';
+        card.style.borderColor = 'red';
+      }
+    };
 
     cardContainer.append(cardDummy, card);
     cardGrid.append(cardContainer);
