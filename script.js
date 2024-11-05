@@ -9,6 +9,7 @@ generateCardGrid();
 
 function generateCardGrid() {
   cardGrid.textContent = '';
+  cardGrid.style.gridTemplateColumns = 'repeat(' + gridDimension + ', 1fr)';
 
   generateColors();
 
