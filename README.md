@@ -2,7 +2,7 @@
 Memory Flip is a card matching game meant to test your memory & recall skills!  
 You will be presented with a grid of cards (default 4x4), which you can flip over.  
 Once you flip over two cards, they will be highlighted in <span style="color: green">green</span> or <span style="color: red">red</span> based on whether they match.  
-There are also counters on the bottom of the page tracking your **tries** and **% correct**.  
+There are also counters on the bottom of the page tracking your **tries**, **% correct**, and **time spent**.  
 You can switch between **2x2**, **4x4**, **6x6**, **8x8**, and **10x10** at the top of the page.  
 You can also switch between dark and light modes. Scroll down to see how each theme looks.  
 **Every setting is saved to local storage and reloaded when the website is refreshed.**
@@ -16,3 +16,6 @@ You can also switch between dark and light modes. Scroll down to see how each th
 
 # Light Mode
 <img src="README_resources/lightmode.png">
+
+# Completed Match Game
+<img src="README_resources/completed.png">
