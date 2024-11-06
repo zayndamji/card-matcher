@@ -69,6 +69,6 @@ button, select, .stats {
   align-items: center;
 }
 
-#tries-counter, #correct-counter {
+#tries-counter, #correct-counter, #time-counter {
   font-weight: bold;
 }

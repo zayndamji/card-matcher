@@ -11,11 +11,20 @@ let colors = [];
 let flippedCards = [];
 let tries = 0;
 let correct = 0;
+let time = 0;
 
 // register event listeners
 document.getElementById('theme-select').addEventListener('change', changeTheme);
 document.getElementById('dimension-select').addEventListener('change', changeDimension);
 document.getElementById('generate-card-grid').addEventListener('click', generateCardGrid);
+
+// start timer
+setInterval(() => {
+  if (gameIsActive()) {
+    time += 1;
+    updateDisplay();
+  }
+}, 1000);
 
 // setup configuration from local storage
 if (localStorage.getItem('theme')) {
@@ -37,6 +46,7 @@ generateCardGrid();
 function updateDisplay() {
   document.getElementById('tries-counter').textContent = tries;
   document.getElementById('correct-counter').textContent = tries == 0 || correct == 0 ? '0' : ''+Math.round((correct / tries) * 100);
+  document.getElementById('time-counter').textContent = time;
 }
 
 // update page theme
@@ -73,6 +83,7 @@ function generateCardGrid() {
   flippedCards = [];
   tries = 0;
   correct = 0;
+  time = 0;
 
   cardGrid.textContent = '';
   cardGrid.style.gridTemplateColumns = 'repeat(' + gridDimension + ', 1fr)';
@@ -164,6 +175,16 @@ async function flipCard(cardIndex) {
 }
 
 // utility functions
+
+function gameIsActive() {
+  for (const card of cardGrid.children) {
+    if (card.children[1].style.backgroundColor == 'var(--card-background)') {
+      return true;
+    }
+  }
+
+  return false;
+}
 
 function hexCodeToString(hex) {
   return hex.toString(16).padStart(6, '0');
