@@ -7,10 +7,12 @@ let colors = [];
 document.getElementById('generate-card-grid').addEventListener('click', generateCardGrid);
 generateCardGrid();
 
-document.getElementById('dimension-select').addEventListener('change', () => {
+document.getElementById('dimension-select').addEventListener('change', changeDimension);
+
+function changeDimension() {
   gridDimension = parseInt(document.getElementById('dimension-select').value);
   generateCardGrid();
-});
+}
 
 function generateCardGrid() {
   cardGrid.textContent = '';
@@ -28,7 +30,7 @@ function generateCardGrid() {
 
     const card = document.createElement('div');
 
-    card.id = colors[i];
+    card.id = 'card' + i;
     card.classList.add('card');
 
     card.style.backgroundColor = 'black';
