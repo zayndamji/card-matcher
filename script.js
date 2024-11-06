@@ -27,10 +27,8 @@ function generateCardGrid() {
       console.log(card.style.backgroundColor);
       if (card.style.backgroundColor == 'black') {
         card.style.backgroundColor = `#${hexCodeToString(colors[i])}`;
-        card.style.borderColor = 'black';
       } else {
         card.style.backgroundColor = 'black';
-        card.style.borderColor = 'red';
       }
     };
 
