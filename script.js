@@ -72,8 +72,10 @@ function generateCardGrid() {
 function generateColors() {
   colors = [];
 
-  for (let i = 0; i < gridArea()/2; i++) {
-    const color = getRandomInt(i*(16777215/(gridArea()/2)), (i+1)*(16777215/(gridArea()/2)));
+  const numOfColors = gridArea()/2;
+  for (let i = 0; i < numOfColors; i++) {
+    const color = getRandomInt(i * (0xFFFFFF / numOfColors) + (0xFFFFFF / numOfColors) / 4, 
+                              (i+1) * (0xFFFFFF / numOfColors) - (0xFFFFFF / numOfColors) / 4);
     console.log(`Index ${i}: #${hexCodeToString(color)}`);
 
     colors.push(color, color);
