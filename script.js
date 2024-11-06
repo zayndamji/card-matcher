@@ -24,6 +24,12 @@ if (localStorage.getItem('theme')) {
   changeTheme();
 }
 
+if (localStorage.getItem('dimension')) {
+  console.log('Loading dimension from local storage.');
+  document.getElementById('dimension-select').value = localStorage.getItem('dimension');
+  changeDimension();
+}
+
 // start by generating card grid
 generateCardGrid();
 
@@ -36,7 +42,6 @@ function updateDisplay() {
 // update page theme
 function changeTheme() {
   const theme = document.getElementById('theme-select').value;
-
   localStorage.setItem('theme', theme);
 
   if (theme == 'light') {
@@ -56,7 +61,10 @@ function changeTheme() {
 
 // update grid dimension
 function changeDimension() {
-  gridDimension = parseInt(document.getElementById('dimension-select').value);
+  const dimension = document.getElementById('dimension-select').value;
+  localStorage.setItem('dimension', dimension);
+
+  gridDimension = parseInt(dimension);
   generateCardGrid();
 }
 
