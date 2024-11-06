@@ -49,7 +49,9 @@ function flipCard(cardIndex) {
   const card = document.getElementById('card' + cardIndex);
   console.log(`User flipped card ${cardIndex} with color ${card.style.backgroundColor}.`);
 
-  if (card.style.backgroundColor == 'black') {
+  const currentlyFlipped = card.style.backgroundColor != 'black';
+
+  if (!currentlyFlipped) {
     card.style.backgroundImage = 'none';
     card.style.backgroundColor = `#${hexCodeToString(colors[cardIndex])}`;
   } else {
