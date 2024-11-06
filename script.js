@@ -3,8 +3,9 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 const cardGrid = document.getElementById('card-grid');
 
 let gridDimension = 4;
-const gridArea = () => gridDimension * gridDimension;
+const gridArea = () => Math.pow(gridDimension, 2);
 let colors = [];
+
 let flippedCards = [];
 let tries = 0;
 let correct = 0;
