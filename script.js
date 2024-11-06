@@ -1,30 +1,36 @@
-const sleep = ms => new Promise(r => setTimeout(r, ms));
-
+// important elements
 const cardGrid = document.getElementById('card-grid');
 
+// grid generation
 let gridDimension = 4;
 const gridArea = () => Math.pow(gridDimension, 2);
 let colors = [];
 
+// frequently changing variables
 let flippedCards = [];
 let tries = 0;
 let correct = 0;
 
+// register event listeners
+document.getElementById('dimension-select').addEventListener('change', changeDimension);
 document.getElementById('generate-card-grid').addEventListener('click', generateCardGrid);
+
+// start by generating card grid
 generateCardGrid();
 
-document.getElementById('dimension-select').addEventListener('change', changeDimension);
-
-function changeDimension() {
-  gridDimension = parseInt(document.getElementById('dimension-select').value);
-  generateCardGrid();
-}
-
+// update display
 function updateDisplay() {
   document.getElementById('tries-counter').textContent = tries;
   document.getElementById('correct-counter').textContent = tries == 0 || correct == 0 ? '0' : ''+Math.round((correct / tries) * 100);
 }
 
+// update grid dimension
+function changeDimension() {
+  gridDimension = parseInt(document.getElementById('dimension-select').value);
+  generateCardGrid();
+}
+
+// re-generate grid of cards
 function generateCardGrid() {
   flippedCards = [];
   tries = 0;
@@ -62,6 +68,7 @@ function generateCardGrid() {
   updateDisplay();
 }
 
+// generate list of semi-random colors
 function generateColors() {
   colors = [];
 
@@ -75,6 +82,7 @@ function generateColors() {
   shuffle(colors);
 }
 
+// flip card at colors[cardIndex]
 async function flipCard(cardIndex) {
   const card = document.getElementById('card' + cardIndex);
 
@@ -115,6 +123,8 @@ async function flipCard(cardIndex) {
   updateDisplay();
 }
 
+// utility functions
+
 function hexCodeToString(hex) {
   return hex.toString(16).padStart(6, '0');
 }
@@ -134,4 +144,8 @@ function shuffle(array) {
 
     [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
   }
+}
+
+function sleep(ms) {
+  return new Promise(r => setTimeout(r, ms));
 }
