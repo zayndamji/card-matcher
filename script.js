@@ -1,8 +1,11 @@
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
 const cardGrid = document.getElementById('card-grid');
 
 let gridDimension = 4;
 const gridArea = () => gridDimension * gridDimension;
 let colors = [];
+let flippedCards = [];
 
 document.getElementById('generate-card-grid').addEventListener('click', generateCardGrid);
 generateCardGrid();
@@ -15,6 +18,8 @@ function changeDimension() {
 }
 
 function generateCardGrid() {
+  flippedCards = [];
+
   cardGrid.textContent = '';
   cardGrid.style.gridTemplateColumns = 'repeat(' + gridDimension + ', 1fr)';
   cardGrid.style.gap = (16 - gridDimension) + 'px';
@@ -45,19 +50,41 @@ function generateCardGrid() {
   }
 }
 
-function flipCard(cardIndex) {
+async function flipCard(cardIndex) {
   const card = document.getElementById('card' + cardIndex);
-  console.log(`User flipped card ${cardIndex} with color ${card.style.backgroundColor}.`);
 
-  const currentlyFlipped = card.style.backgroundColor != 'black';
+  if (flippedCards.length >= 2) return; // still processing previous cards
 
-  if (!currentlyFlipped) {
-    card.style.backgroundImage = 'none';
-    card.style.backgroundColor = `#${hexCodeToString(colors[cardIndex])}`;
+  if (card.style.backgroundColor != 'black') return; // not allowed to un-flip card
+
+  flippedCards.push(card);
+  card.style.backgroundImage = 'none';
+  card.style.backgroundColor = '#' + hexCodeToString(colors[cardIndex]);
+
+  if (flippedCards.length == 1) return; // wait until next card is flipped
+
+  const firstCard = flippedCards[0];
+  const secondCard = flippedCards[1];
+
+  const firstCardColor = firstCard.style.backgroundColor;
+  const secondCardColor = secondCard.style.backgroundColor;
+
+  if (firstCardColor == secondCardColor) {
+    firstCard.style.borderColor = 'lightgreen';
+    secondCard.style.borderColor = 'lightgreen';
   } else {
-    card.style.backgroundImage = 'url("card.png")';
-    card.style.backgroundColor = 'black';
+    firstCard.style.borderColor = 'red';
+    secondCard.style.borderColor = 'red';
+    await sleep(500);
+    firstCard.style.backgroundColor = 'black';
+    firstCard.style.backgroundImage = `url("card.png")`;
+    firstCard.style.borderColor = 'white';
+    secondCard.style.backgroundColor = 'black';
+    secondCard.style.backgroundImage = `url("card.png")`;
+    secondCard.style.borderColor = 'white';
   }
+
+  flippedCards = [];
 }
 
 function generateColors() {
