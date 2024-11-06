@@ -1,11 +1,16 @@
 const cardGrid = document.getElementById('card-grid');
 
-const gridDimension = 4;
+let gridDimension = 4;
 const gridArea = () => gridDimension * gridDimension;
 let colors = [];
 
 document.getElementById('generate-card-grid').addEventListener('click', generateCardGrid);
 generateCardGrid();
+
+document.getElementById('dimension-select').addEventListener('change', () => {
+  gridDimension = parseInt(document.getElementById('dimension-select').value);
+  generateCardGrid();
+});
 
 function generateCardGrid() {
   cardGrid.textContent = '';
