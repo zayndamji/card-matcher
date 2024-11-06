@@ -60,12 +60,18 @@ function changeTheme() {
     root.style.setProperty('--border', 'black');
     root.style.setProperty('--card-background', 'white');
     root.style.setProperty('--card-url', 'url("cardBlack.png")');
-  } else {
+  } else if (theme == 'dark') {
     root.style.setProperty('--text', 'white');
     root.style.setProperty('--background', 'rgb(22, 22, 22)');
     root.style.setProperty('--border', 'white');
     root.style.setProperty('--card-background', 'black');
     root.style.setProperty('--card-url', 'url("cardWhite.png")');
+  } else {
+    root.style.setProperty('--text', 'black');
+    root.style.setProperty('--background', '#e8f3ff');
+    root.style.setProperty('--border', '#53a6ff');
+    root.style.setProperty('--card-background', '#C2DFFF');
+    root.style.setProperty('--card-url', 'url("cardBlack.png")');
   }
 }
 
