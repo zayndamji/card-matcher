@@ -12,13 +12,20 @@ You can also switch between dark, light, and sea themes. Scroll down to see how 
 
 # Dark Mode (default)
 <img src="README_resources/darkmode.png">
-<br>
+<br><br>
 
 # Light Mode
 <img src="README_resources/lightmode.png">
+<br><br>
 
 # Sea Theme
 <img src="README_resources/seatheme.png">
+<br><br>
 
-# Completed Game (Dark Mode)
-<img src="README_resources/completed.png">
+# 4x4 Grid
+<img src="README_resources/4x4.png">
+<br><br>
+
+# 6x6 Grid
+<img src="README_resources/6x6.png">
+<br><br>
