@@ -21,13 +21,18 @@ function generateCardGrid() {
     cardDummy.classList.add('card-dummy');
     const card = document.createElement('div');
     card.classList.add('card');
-    card.style.backgroundColor = `black`;
+    card.style.backgroundColor = 'black';
+    card.style.backgroundImage = `url("card.png")`;
+    card.style.backgroundPosition = 'center';
+    card.style.backgroundSize = 'cover';
     card.id = colors[i];
     card.onclick = () => {
       console.log(card.style.backgroundColor);
       if (card.style.backgroundColor == 'black') {
+        card.style.backgroundImage = 'none';
         card.style.backgroundColor = `#${hexCodeToString(colors[i])}`;
       } else {
+        card.style.backgroundImage = 'url("card.png")';
         card.style.backgroundColor = 'black';
       }
     };
