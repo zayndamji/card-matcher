@@ -4,7 +4,7 @@ body {
   background-color: rgb(22, 22, 22);
 }
 
-button {
+button, select {
   background-color: transparent;
   color: white;
   border: solid white 2px;
@@ -12,12 +12,12 @@ button {
   height: 48px;
   width: 196px;
   font-size: 16px;
+  text-align: center;
 }
 
 #card-grid {
   display: grid;
-  row-gap: 1vw;
-  column-gap: 1vw;
+  gap: 16px;
   max-width: 580px;
   margin: 0 auto;
 }

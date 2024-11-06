@@ -10,6 +10,7 @@ generateCardGrid();
 function generateCardGrid() {
   cardGrid.textContent = '';
   cardGrid.style.gridTemplateColumns = 'repeat(' + gridDimension + ', 1fr)';
+  cardGrid.style.gap = (16 - gridDimension) + 'px';
 
   generateColors();
 
@@ -19,13 +20,17 @@ function generateCardGrid() {
 
     const cardDummy = document.createElement('div');
     cardDummy.classList.add('card-dummy');
+
     const card = document.createElement('div');
+
+    card.id = colors[i];
     card.classList.add('card');
+
     card.style.backgroundColor = 'black';
     card.style.backgroundImage = `url("card.png")`;
     card.style.backgroundPosition = 'center';
     card.style.backgroundSize = 'cover';
-    card.id = colors[i];
+
     card.onclick = () => {
       console.log(card.style.backgroundColor);
       if (card.style.backgroundColor == 'black') {
