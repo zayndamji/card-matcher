@@ -61,6 +61,19 @@ function generateCardGrid() {
   updateDisplay();
 }
 
+function generateColors() {
+  colors = [];
+
+  for (let i = 0; i < gridArea()/2; i++) {
+    const color = getRandomInt(i*(16777215/(gridArea()/2)), (i+1)*(16777215/(gridArea()/2)));
+    console.log(`Index ${i}: #${hexCodeToString(color)}`);
+
+    colors.push(color, color);
+  }
+
+  shuffle(colors);
+}
+
 async function flipCard(cardIndex) {
   const card = document.getElementById('card' + cardIndex);
 
@@ -99,19 +112,6 @@ async function flipCard(cardIndex) {
   flippedCards = [];
   tries += 1;
   updateDisplay();
-}
-
-function generateColors() {
-  colors = [];
-
-  for (let i = 0; i < gridArea()/2; i++) {
-    const color = getRandomInt(i*(16777215/(gridArea()/2)), (i+1)*(16777215/(gridArea()/2)));
-    console.log(`Index ${i}: #${hexCodeToString(color)}`);
-
-    colors.push(color, color);
-  }
-
-  shuffle(colors);
 }
 
 function hexCodeToString(hex) {
