@@ -38,19 +38,23 @@ function generateCardGrid() {
     card.style.backgroundPosition = 'center';
     card.style.backgroundSize = 'cover';
 
-    card.onclick = () => {
-      console.log(card.style.backgroundColor);
-      if (card.style.backgroundColor == 'black') {
-        card.style.backgroundImage = 'none';
-        card.style.backgroundColor = `#${hexCodeToString(colors[i])}`;
-      } else {
-        card.style.backgroundImage = 'url("card.png")';
-        card.style.backgroundColor = 'black';
-      }
-    };
+    card.onclick = () => flipCard(i);
 
     cardContainer.append(cardDummy, card);
     cardGrid.append(cardContainer);
+  }
+}
+
+function flipCard(cardIndex) {
+  const card = document.getElementById('card' + cardIndex);
+  console.log(`User flipped card ${cardIndex} with color ${card.style.backgroundColor}.`);
+
+  if (card.style.backgroundColor == 'black') {
+    card.style.backgroundImage = 'none';
+    card.style.backgroundColor = `#${hexCodeToString(colors[cardIndex])}`;
+  } else {
+    card.style.backgroundImage = 'url("card.png")';
+    card.style.backgroundColor = 'black';
   }
 }
 
@@ -59,7 +63,8 @@ function generateColors() {
 
   for (let i = 0; i < gridArea()/2; i++) {
     const color = getRandomInt(i*(16777215/(gridArea()/2)), (i+1)*(16777215/(gridArea()/2)));
-    console.log(color);
+    console.log(`Index ${i}: #${hexCodeToString(color)}`);
+
     colors.push(color, color);
   }
 
