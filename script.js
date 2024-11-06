@@ -17,6 +17,13 @@ document.getElementById('theme-select').addEventListener('change', changeTheme);
 document.getElementById('dimension-select').addEventListener('change', changeDimension);
 document.getElementById('generate-card-grid').addEventListener('click', generateCardGrid);
 
+// setup configuration from local storage
+if (localStorage.getItem('theme')) {
+  console.log('Loading theme from local storage.');
+  document.getElementById('theme-select').value = localStorage.getItem('theme');
+  changeTheme();
+}
+
 // start by generating card grid
 generateCardGrid();
 
@@ -28,7 +35,11 @@ function updateDisplay() {
 
 // update page theme
 function changeTheme() {
-  if (document.getElementById('theme-select').value == 'light') {
+  const theme = document.getElementById('theme-select').value;
+
+  localStorage.setItem('theme', theme);
+
+  if (theme == 'light') {
     root.style.setProperty('--text', 'black');
     root.style.setProperty('--background', 'white');
     root.style.setProperty('--border', 'black');
