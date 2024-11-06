@@ -1,4 +1,5 @@
 // important elements
+const root = document.querySelector(':root');
 const cardGrid = document.getElementById('card-grid');
 
 // grid generation
@@ -12,6 +13,7 @@ let tries = 0;
 let correct = 0;
 
 // register event listeners
+document.getElementById('theme-select').addEventListener('change', changeTheme);
 document.getElementById('dimension-select').addEventListener('change', changeDimension);
 document.getElementById('generate-card-grid').addEventListener('click', generateCardGrid);
 
@@ -22,6 +24,23 @@ generateCardGrid();
 function updateDisplay() {
   document.getElementById('tries-counter').textContent = tries;
   document.getElementById('correct-counter').textContent = tries == 0 || correct == 0 ? '0' : ''+Math.round((correct / tries) * 100);
+}
+
+// update page theme
+function changeTheme() {
+  if (document.getElementById('theme-select').value == 'light') {
+    root.style.setProperty('--text', 'black');
+    root.style.setProperty('--background', 'white');
+    root.style.setProperty('--border', 'black');
+    root.style.setProperty('--card-background', 'white');
+    root.style.setProperty('--card-url', 'url("cardBlack.png")');
+  } else {
+    root.style.setProperty('--text', 'white');
+    root.style.setProperty('--background', 'rgb(22, 22, 22)');
+    root.style.setProperty('--border', 'white');
+    root.style.setProperty('--card-background', 'black');
+    root.style.setProperty('--card-url', 'url("cardWhite.png")');
+  }
 }
 
 // update grid dimension
@@ -54,8 +73,8 @@ function generateCardGrid() {
     card.id = 'card' + i;
     card.classList.add('card');
 
-    card.style.backgroundColor = 'black';
-    card.style.backgroundImage = `url("card.png")`;
+    card.style.backgroundColor = 'var(--card-background)';
+    card.style.backgroundImage = `var(--card-url)`;
     card.style.backgroundPosition = 'center';
     card.style.backgroundSize = 'cover';
 
@@ -90,7 +109,7 @@ async function flipCard(cardIndex) {
 
   if (flippedCards.length >= 2) return; // still processing previous cards
 
-  if (card.style.backgroundColor != 'black') return; // not allowed to un-flip card
+  if (card.style.backgroundColor != 'var(--card-background)') return; // not allowed to un-flip card
 
   flippedCards.push(card);
   card.style.backgroundImage = 'none';
@@ -112,12 +131,12 @@ async function flipCard(cardIndex) {
     firstCard.style.borderColor = 'red';
     secondCard.style.borderColor = 'red';
     await sleep(500);
-    firstCard.style.backgroundColor = 'black';
-    firstCard.style.backgroundImage = `url("card.png")`;
-    firstCard.style.borderColor = 'white';
-    secondCard.style.backgroundColor = 'black';
-    secondCard.style.backgroundImage = `url("card.png")`;
-    secondCard.style.borderColor = 'white';
+    firstCard.style.backgroundColor = 'var(--card-background)';
+    firstCard.style.backgroundImage = `var(--card-url)`;
+    firstCard.style.borderColor = 'var(--border)';
+    secondCard.style.backgroundColor = 'var(--card-background)';
+    secondCard.style.backgroundImage = `var(--card-url)`;
+    secondCard.style.borderColor = 'var(--border)';
   }
 
   flippedCards = [];
