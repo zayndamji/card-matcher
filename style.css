@@ -1,10 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 body {
   font-size: 16px;
   text-align: center;
   background-color: rgb(22, 22, 22);
+  color: white;
+  font-family: Roboto, sans-serif;
+  overflow: hidden;
 }
 
-button, select {
+button, select, .stats {
   background-color: transparent;
   color: white;
   border: solid white 2px;
@@ -13,12 +18,13 @@ button, select {
   width: 196px;
   font-size: 2.5vh;
   text-align: center;
+  margin: 0 8px;
 }
 
 #card-grid {
   display: grid;
   gap: 16px;
-  max-width: 85vh;
+  max-width: 78vh;
   margin: 0 auto;
 }
 
@@ -40,4 +46,21 @@ button, select {
   right: 0;
   border: solid white 2px;
   border-radius: 16px;
+}
+
+#counter-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 12vh;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#tries-counter, #correct-counter {
+  font-weight: bold;
 }

@@ -6,6 +6,8 @@ let gridDimension = 4;
 const gridArea = () => gridDimension * gridDimension;
 let colors = [];
 let flippedCards = [];
+let tries = 0;
+let correct = 0;
 
 document.getElementById('generate-card-grid').addEventListener('click', generateCardGrid);
 generateCardGrid();
@@ -17,8 +19,15 @@ function changeDimension() {
   generateCardGrid();
 }
 
+function updateDisplay() {
+  document.getElementById('tries-counter').textContent = tries;
+  document.getElementById('correct-counter').textContent = tries == 0 || correct == 0 ? '0' : ''+Math.round((correct / tries) * 100);
+}
+
 function generateCardGrid() {
   flippedCards = [];
+  tries = 0;
+  correct = 0;
 
   cardGrid.textContent = '';
   cardGrid.style.gridTemplateColumns = 'repeat(' + gridDimension + ', 1fr)';
@@ -48,6 +57,8 @@ function generateCardGrid() {
     cardContainer.append(cardDummy, card);
     cardGrid.append(cardContainer);
   }
+
+  updateDisplay();
 }
 
 async function flipCard(cardIndex) {
@@ -72,6 +83,7 @@ async function flipCard(cardIndex) {
   if (firstCardColor == secondCardColor) {
     firstCard.style.borderColor = 'lightgreen';
     secondCard.style.borderColor = 'lightgreen';
+    correct += 1;
   } else {
     firstCard.style.borderColor = 'red';
     secondCard.style.borderColor = 'red';
@@ -85,6 +97,8 @@ async function flipCard(cardIndex) {
   }
 
   flippedCards = [];
+  tries += 1;
+  updateDisplay();
 }
 
 function generateColors() {
