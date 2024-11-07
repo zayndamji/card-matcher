@@ -11,21 +11,21 @@ You can also switch between dark, light, and sea themes. Scroll down to see how 
 <br>
 
 # Dark Mode (default)
-<img src="README_resources/darkmode.png">
+<img src="https://raw.githubusercontent.com/zayndamji/memory-flip/refs/heads/main/README_resources/darkmode.png">
 <br><br>
 
 # Light Mode
-<img src="README_resources/lightmode.png">
+<img src="https://raw.githubusercontent.com/zayndamji/memory-flip/refs/heads/main/README_resources/lightmode.png">
 <br><br>
 
 # Sea Theme
-<img src="README_resources/seatheme.png">
+<img src="https://raw.githubusercontent.com/zayndamji/memory-flip/refs/heads/main/README_resources/seatheme.png">
 <br><br>
 
 # 4x4 Grid
-<img src="README_resources/4x4.png">
+<img src="https://raw.githubusercontent.com/zayndamji/memory-flip/refs/heads/main/README_resources/4x4.png">
 <br><br>
 
 # 6x6 Grid
-<img src="README_resources/6x6.png">
+<img src="https://raw.githubusercontent.com/zayndamji/memory-flip/refs/heads/main/README_resources/6x6.png">
 <br><br>
